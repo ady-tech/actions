@@ -3,12 +3,17 @@ name: First Workflow
 on: [workflow_dispatch]
 
 jobs:
-  dowstream-vars:
+  downstream-tags:
     runs-on: ubuntu-latest
-    outputs:
-      PROFILE: ${{ steps.profile.outputs.PROFILE }}
+
     steps:
-      - id: profile
+      - name: Save PR number
+        env:
+          PR_NUMBER: ${{ github.event.number }}
         run: |
-          profile="Deu bom"
-          echo "PROFILE=$profile" >> GITHUB_OUTPUT
+          mkdir -p ./pr
+          echo $PR_NUMBER > ./pr/pr_number
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pr_number
+          path: pr/
