@@ -1,0 +1,15 @@
+name: Second Flow
+
+on:
+ workflow_run:
+   workflows: ["First Workflow"]
+   types: 
+     - completed
+
+jobs:
+  first-output:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ github.event.workflow_run.outputs.PROFILE }}"
+          echo "${{ github.event.workflow_run.dowstream-vars.outputs.PROFILE }}"
