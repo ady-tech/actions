@@ -44,7 +44,7 @@ jobs:
         run: unzip pr_number.zip
 
       - name: result
-        run: cat "${{ runner.temp }}/artifacts/pr_number"
+        run: cat "${{ runner.temp }}/artifacts/pr_number.txt"
 
             
 

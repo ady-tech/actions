@@ -9,10 +9,10 @@ jobs:
     steps:
       - name: Save PR number
         env:
-          PR_NUMBER: ${{ github.event.number }}
+          PR_NUMBER: ${{ github.run_number }}
         run: |
           mkdir -p ./pr
-          echo $PR_NUMBER > ./pr/pr_number
+          echo $PR_NUMBER > ./pr/pr_number.txt
       - uses: actions/upload-artifact@v4
         with:
           name: pr_number
