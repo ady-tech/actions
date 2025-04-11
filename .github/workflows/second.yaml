@@ -23,7 +23,7 @@ jobs:
             let matchArtifact = allArtifacts.data.artifacts.filter((artifact) => {
               return artifact.name == "pr_number"
             })[0];
-            echo "Match Artifact: $matchArtifact"
+            echo "Match Artifact: $matchArtifact.id"
             
             let download = await github.rest.actions.downloadArtifact({
                owner: context.repo.owner,
@@ -31,7 +31,6 @@ jobs:
                artifact_id: matchArtifact.id,
                archive_format: 'zip',
             });
-            echo "ZIP File: $download"
 
             const fs = require('fs');
             const path = require('path');
