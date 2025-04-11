@@ -1,0 +1,14 @@
+name: First Workflow
+
+on: [workflow_dispatch]
+
+jobs:
+  dowstream-vars:
+    runs-on: ubuntu-latest
+    outputs:
+      PROFILE: ${{ steps.profile.outputs.PROFILE }}
+    steps:
+      - id: profile
+        run: |
+          profile="Deu bom"
+          echo "PROFILE=$profile" >> GITHUB_OUTPUT
