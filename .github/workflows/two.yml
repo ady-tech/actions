@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "${{ github.env.workflow_run.outputs.ONE }}"
+          echo "${{ github.event.workflow_run.outputs.ONE }}"
