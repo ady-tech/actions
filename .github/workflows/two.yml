@@ -1,0 +1,14 @@
+name: Two
+
+on:
+ workflow_run:
+   workflows: ["One"]
+   types: 
+     - completed
+
+jobs:
+  reusable:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ github.env.workflow_run.outputs.ONE }}"
