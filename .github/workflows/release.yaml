@@ -9,7 +9,7 @@ permissions:
 jobs:
   determine-version:
     runs-on: ubuntu-latest
-    output:
+    outputs:
       VERSION: ${{ steps.cz.output.version }}
       VERSION_ENV: ${{ env.REVISION }}
     
