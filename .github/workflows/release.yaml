@@ -3,11 +3,11 @@ name: Release Gradle Plugin
 on: [workflow_dispatch]
 
 permissions:
-  contents: read
+  contents: write
+  issues: write
 
 jobs:
   determine-version:
-    if: "!startsWith(github.event.head_commit.message, 'bump:')"
     runs-on: ubuntu-latest
     
     steps:
